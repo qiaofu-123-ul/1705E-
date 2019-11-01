@@ -64,21 +64,60 @@ Object最后一个是引用类型，引用类型都存在堆里面，其余的�
 
 
 ##### 安装的基本流程
-1. 
-
+1. 去对应的网站（镜像源）查找需要的包
+2. 找到需要下载的压缩包，下载压缩包到缓存目录里面
+3. 解压到当前目录里面
 
 
 ==镜像源==
+1. [官方镜像源]https://registry.npmjs.org/
+2. [淘宝镜像源]https://registry.npm.taobao.org
+
+> 查看镜像源
+
+    npm config get registry   
+
+> 设置镜像源
+
+    npm config set registry 地址
+
+
 ==缓存==
+
+> 查看缓存目录
+
+    npm config get cache
+
+
 ==解压==
+
+> 获取当前的解压目录路径
+
+    npm config get prefix
+
+> 设置当前的解压目录路径
+
+    npm config set prefix  路径
 
 
 #### 根据依赖安装
 
+    npm i / npm install 
+
+根据package.json里面的依赖安装
+
 
 #### commonjs查找机制
 
+1. require()  如果是./  ../找的是js文件， 如果没有./ ../ 找的是包
+
+2. 是包，会在当前目录里面的node_modules里面来查找，查找当前的包。
+
+3. 如果找到了这个包，会找这个包下边的index.js，如果没有index.js，会找package.json里面main字段。
+
+4. 如果没有找到，会一次往上查找，知道当前盘符，如果当前盘符没有找到，会去NODE_PATH里面查找。
 
 #### NODE_PATH配置和作用
 
-    作用：指定一个路径，供require查找使用
+在环境变量里面配置NODE_PATH
+作用：指定一个路径，供require查找使用
